@@ -3,9 +3,14 @@ import { NextResponse } from "next/server";
 import Kollywood from "@/lib/models/kollywood";
 import connectdb from "@/lib/Connect";
 
-export async function GET(request: Request, { params }: { params:{ id: string } }) {
+export async function GET(
+ request: Request,
+  context: { params: { id: string } }
+
+
+) {
   try {
-      const id = (await params).id
+        const { id } = context.params;
       
     await  mongoose.connect(connectdb)
 
